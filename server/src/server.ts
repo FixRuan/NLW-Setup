@@ -1,11 +1,15 @@
 import Fastify from "fastify";
+import { PrismaClient } from "prisma/prisma-client";
 
 const app = Fastify();
+const prisma = new PrismaClient();
 
-app.get("/", () => {
-  return "Hello World";
+app.get("/", async () => {
+  const habits = await prisma.habit.findMany({});
+
+  return habits;
 });
 
 app.listen({
   port: 3333
-});
+}).then(() => console.log("Http Server Runing"));
