@@ -1,18 +1,12 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
-import { PrismaClient } from "prisma/prisma-client";
+import { appRoutes } from "./routes";
 
 const app = Fastify();
+
 app.register(cors);
+app.register(appRoutes);
 
-const prisma = new PrismaClient();
-
-app.get("/", async () => {
-  const habits = await prisma.habit.findMany({});
-
-  return habits;
-});
-
-app.listen({
-  port: 3333
-}).then(() => console.log("Http Server Runing"));
+app.listen({ port: 3333 }).then(
+  () => console.log("Http Server Runing")
+);
