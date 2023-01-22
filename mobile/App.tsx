@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
-
+import { StatusBar } from "react-native";
 import { Loading } from "./src/components/Loading";
 
 import {
@@ -10,6 +9,7 @@ import {
   Inter_700Bold,
   Inter_800ExtraBold
 } from "@expo-google-fonts/inter";
+import { Home } from "./src/screens/Home";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,21 +26,7 @@ export default function App() {
   return (
     <>
       <StatusBar translucent={false} backgroundColor="#09090A" />
-
-      <View style={styles.container}>
-        <Text style={{ color: "#7C3AED", fontWeight: "bold", fontSize: 32 }}>
-          Hello World
-        </Text>
-      </View>
+      <Home />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#09090A",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
